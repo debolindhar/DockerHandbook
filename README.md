@@ -107,7 +107,7 @@ Calling a build using Powershell -
 $body = '
 { 
         "definition": {
-            "id": 1702
+            "id": 
         } 
 }
 '
@@ -116,10 +116,10 @@ Write-Output $bodyJson
 $bodyString=$bodyJson | ConvertTo-Json -Depth 100
 Write-Output $bodyString
 $user="VSTSAPI"
-$token="7nl7eb5ctz66rjuikrbj3ftht67riwzecdpb2g2lczjrj53ukicq"
+$token=""
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $user,$token)))
 
-$Uri = "https://dev.azure.com/accenturecio05/DiPA_7364/_apis/build/builds?api-version=5.0"
+$Uri = "https://dev.azure.com/"
 $buildresponse = Invoke-RestMethod -Method Post -UseDefaultCredentials -ContentType application/json -Uri $Uri -Body $bodyString -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)}
 write-host $buildresponse
 
